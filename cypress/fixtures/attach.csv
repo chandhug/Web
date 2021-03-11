@@ -1,0 +1,163 @@
+{
+    "bundling": {
+        "enabled": true,
+        "type": ["bundlesummary"],
+        "targets": [
+            {
+                "collection": "consociate",
+                "target_dataset": "bundle",
+                "source_dataset": "patient",
+                "source_field": "",
+                "bundling_type_field": "*",
+                "source_key": {
+                    "field": "primaryId",
+                    "test": ""
+                },
+                "target_field": "",
+                "target_key": {
+                    "field": "primaryId",
+                    "test": ""
+                }
+            },
+            {
+                "collection": "consociate",
+                "target_dataset": "bundle",
+                "source_dataset": "coverage",
+                "source_field": "",
+                "bundling_type_field": "policyHolder",
+                "source_key": {
+                    "field": "policyHolder.primaryId",
+                    "test": ""
+                },
+                "target_field": "",
+                "target_key": {
+                    "field": "primaryId",
+                    "test": ""
+                }
+            }
+        ]
+    },
+    "collection": "consociate",
+    "datasets": [
+        {
+            "dataset_name": "person",
+            "schema_name": "Person"
+        },
+        {
+            "dataset_name": "coverage",
+            "schema_name": "Coverage"
+        },
+        {
+            "dataset_name": "patient",
+            "schema_name": "Patient"
+        },
+        {
+            "dataset_name": "bundle",
+            "schema_name": "Bundle"
+        },
+        {
+            "dataset_name": "bundlesummary",
+            "schema_name": "BundleSummary"
+        },
+        {
+            "dataset_name": "bundlestats",
+            "schema_name": "BundleStats"
+        }
+    ],
+    "description": "consociate_rochelle_elig_full",
+    "name": "consociate_rochelle_elig_full",
+    "preprocessing": {
+        "row_parsing_code": "data['coverageCompositeId'] = '210120' + data['pat_id'].strip() + data['enr_frst'].strip() + data['enr_last'].strip()\ndata['memberId']= '210120' + data['sbscr_id'].strip() + data['dependent'].strip()\ndata['member_id_1']= '210120' + data['sbscr_id'].strip() + data['dependent'].strip()\ndata['methodOne'] ='SMS'\ndata['methodTwo'] = 'Email'\ndata['notificationGroupOne'] = 'Medication Reminders'\ndata['notificationDescriptionOne'] = 'Get reminders about when to take your medications and when to refill your prescriptions'\ndata['notificationGroupTwo'] = 'Prescription status updates'\ndata['notificationDescriptionTwo'] = 'Receive updates about the status of your prescriptions'\ndata['notificationGroupThree'] = 'Safety alerts'\ndata['notificationDescriptionThree'] = 'Be notified when there are possible safety issues with your medications, like drug interactions and recalls'\ndata['notificationGroupFour'] = 'Price alerts'\ndata['notificationDescriptionFour'] = 'Get updates on the best pharmacies to help you save on your medications'\ndata['notificationGroupFive'] = 'Care team updates'\ndata['notificationDescriptionFive'] = 'Follow communications between WithMe and your care team'\ndata['notificationGroupSix'] = 'Newsletters'\ndata['notificationDescriptionSix'] = 'Learn about new things WithMe is doing to improve your prescription benefits'\ndata['group_id']='210120'\ndata['client_id']='210120'\ndata['defaultContactTime']=None"
+    },
+    "sheet_info": {
+        "mapping_column": "FHIR",
+        "header_column": "iqvia_1dot7k",
+        "sheet_name": "WithMe_Eligibility",
+        "standard_value_mapping_column": "iqvia_SVM"
+    },
+    "type": "csv",
+    "version": ""
+}
+
+
+
+{
+    "bundling": {
+        "enabled": true,
+        "type": ["*"],
+        "targets": [
+            {
+                "target_dataset": "bundle",
+                "source_dataset": "patient",
+                "source_field": "",
+                "bundling_type_field": "*",
+                "source_key": {
+                    "field": "primaryId",
+                    "test": ""
+                },
+                "target_field": "",
+                "target_key": {
+                    "field": "primaryId",
+                    "test": ""
+                }
+            },
+            {
+                "target_dataset": "bundle",
+                "source_dataset": "coverage",
+                "source_field": "",
+                "bundling_type_field": "policyHolder",
+                "source_key": {
+                    "field": "policyHolder.primaryId",
+                    "test": ""
+                },
+                "target_field": "",
+                "target_key": {
+                    "field": "primaryId",
+                    "test": ""
+                }
+            }
+        ]
+    },
+    "collection": "es_test_2",
+    "datasets": [
+        {
+            "dataset_name": "patient",
+            "schema_name": "Patient"
+        },
+        {
+            "dataset_name": "person",
+            "schema_name": "Person"
+        },
+        {
+            "dataset_name": "coverage",
+            "schema_name": "Coverage"
+        },
+        {
+            "dataset_name": "bundle",
+            "schema_name": "Bundle"
+        },
+        {
+            "dataset_name": "bundlesummary",
+            "schema_name": "BundleSummary"
+        }
+    ],
+    "description": "es_test_2",
+    "name": "es_test_2",
+    "preprocessing": {
+        "row_parsing_code": "data['TPA ID'] = 'Consociate'\ndata['Patient ID'] = data['Carrier ID'] + data['Cardholder ID'] + data['Person Code']\ndata['Member ID'] = data['Carrier ID'] + data['Cardholder ID'] + data['Person Code']\ndata['Coverage ID'] = data['Carrier ID'] + data['Cardholder ID'] + data['Person Code'] + data['Medical Effective Start']\nplans = {'210102':'200001','210103':'200002','210111':'200003','210104':'200004','210105':'200005','210106':'200006','210107':'200007','210108':'200008','210109':'200009','210110':'200010','210112':'200012','210121':'200013','210101':'200014','210113':'200015','210114':'200016','210115':'200017','210116':'200018','210117':'200020','210118':'200021','210119':'200022','210120':'200023'}\ndata['Plan ID'] = plans[data['Carrier ID']]\ndata['Coverage Group ID'] = data['Carrier ID']\ndata['methodOne'] ='SMS'\ndata['methodTwo'] = 'Email'\ndata['notificationGroupOne'] = 'Medication Reminders'\ndata['notificationDescriptionOne'] = 'Get reminders about when to take your medications and when to refill your prescriptions'\ndata['notificationGroupTwo'] = 'Prescription status updates'\ndata['notificationDescriptionTwo'] = 'Receive updates about the status of your prescriptions'\ndata['notificationGroupThree'] = 'Safety alerts'\ndata['notificationDescriptionThree'] = 'Be notified when there are possible safety issues with your medications, like drug interactions and recalls'\ndata['notificationGroupFour'] = 'Price alerts'\ndata['notificationDescriptionFour'] = 'Get updates on the best pharmacies to help you save on your medications'\ndata['notificationGroupFive'] = 'Care team updates'\ndata['notificationDescriptionFive'] = 'Follow communications between WithMe and your care team'\ndata['notificationGroupSix'] = 'Newsletters'\ndata['notificationDescriptionSix'] = 'Learn about new things WithMe is doing to improve your prescription benefits'\ndata['defaultContactTime']=None\nimport hashlib\ndata['internalAddressID']=data['Member ID'].strip()+data['Address 1'].strip()+data['Address 2'].strip()+data['City'].strip()+data['State'].strip()+data['Zip'].strip()\ndata['internalAddressID']=hashlib.sha1(str.encode(data['internalAddressID'].lower())).hexdigest()"
+    },
+    "sheet_info": {
+        "header_column": "Eligibility_Centivo",
+        "mapping_column": "FHIR Consociate",
+        "sheet_name": "WithMe_Eligibility",
+        "standard_value_mapping_column": "Eligibility_Centivo_SVM"
+    },
+    "type": "csv",
+    "version": ""
+}
+ },
+                "target_field": "",
+                "target_key": {
+                    "field": "primaryId",
+                    "test": ""
+                }
