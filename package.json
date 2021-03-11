@@ -1,0 +1,27 @@
+{
+  "name": "qa-automation-cypress",
+  "version": "0.0.0",
+  "description": "QA Automation Cypress",
+  "main": "index.js",
+  "dependencies": {
+    "cypress-file-upload": "^4.1.1",
+    "cypress-iframe": "^1.0.1"
+  },
+  "devDependencies": {
+    "cypress": "^6.3.0"
+  },
+  "scripts": {
+    "test-guide-dev": "CYPRESS_BASE_URL=http://web-guide-dev-service.dev.svc.cluster.local CYPRESS_ENVIRONMENT_NAME=dev cypress run --browser chrome --spec ./cypress/integration/web-guide/**/*.js",
+    "test-guide-test": "CYPRESS_BASE_URL=https://guide.apps.test.withmehealth.com/ CYPRESS_ENVIRONMENT_NAME=test cypress run --browser chrome --spec ./cypress/integration/web-guide/**/*.js",
+    "test-atc-dev": "CYPRESS_BASE_URL=http://atc-dev-service.dev.svc.cluster.local CYPRESS_ENVIRONMENT_NAME=dev cypress run --browser chrome --spec ./cypress/integration/atc/**/*.js",
+    "test-atc-test": "CYPRESS_BASE_URL=https://apps.test.withmehealth.com/ CYPRESS_ENVIRONMENT_NAME=test cypress run --browser chrome --spec ./cypress/integration/atc/**/*.js",
+    "test:integration-ci": "cypress run --browser chrome",
+    "test:integration:atc-dev": "CYPRESS_ENVIRONMENT_NAME=dev CYPRESS_BASE_URL=http://atc-dev-service.dev.svc.cluster.local/ ./node_modules/.bin/cypress open",
+    "test:integration:guide-dev": "CYPRESS_ENVIRONMENT_NAME=dev CYPRESS_BASE_URL=http://web-guide-dev-service.dev.svc.cluster.local ./node_modules/.bin/cypress open",
+    "test:integration:atc-qa": "CYPRESS_ENVIRONMENT_NAME=test CYPRESS_BASE_URL=https://apps.test.withmehealth.com/ ./node_modules/.bin/cypress open",
+    "test:integration:guide-qa": "CYPRESS_ENVIRONMENT_NAME=test CYPRESS_BASE_URL=https://guide.apps.test.withmehealth.com/ ./node_modules/.bin/cypress open",
+    "test:guide-local": "CYPRESS_ENVIRONMENT_NAME=dev CYPRESS_BASE_URL=http://localhost:8081 cypress open"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,14 @@
+{
+  "watchForFileChanges": false,
+  "integrationFolder": "cypress/integration/",
+  "baseUrl": "https://guide.apps.test.withmehealth.com/",
+  "numTestsKeptInMemory": 5,
+  "reporter": "junit",
+  "projectId": "uznouc",
+  "defaultCommandTimeout": 10000,
+  "chromeWebSecurity": false,
+  "viewportWidth": 1500,
+  "viewportHeight": 990,
+  "retries": { "runMode": 2, "openMode": 1 }
+  
+}
