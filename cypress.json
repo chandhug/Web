@@ -1,7 +1,7 @@
 {
   "watchForFileChanges": false,
   "integrationFolder": "cypress/integration/",
-  "baseUrl": "https://guide.apps.test.withmehealth.com/",
+  "baseUrl": "https://guide.apps.test.health.com/",
   "numTestsKeptInMemory": 5,
   "reporter": "junit",
   "projectId": "uznouc",
